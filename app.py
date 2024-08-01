@@ -1,15 +1,16 @@
 from flask import Flask, render_template, request, redirect, url_for, session
 from flask_mysqldb import MySQL
 from werkzeug.security import generate_password_hash, check_password_hash
+import os
 
 app = Flask(__name__)
 app.secret_key = 'your_secret_key'
 
 # MySQL configurations
-app.config['MYSQL_HOST'] = 'contact-main.cx4su6kqcoz8.ap-south-1.rds.amazonaws.com'
-app.config['MYSQL_USER'] = 'admin'
-app.config['MYSQL_PASSWORD'] = 'Sath7wik731'
-app.config['MYSQL_DB'] = 'Contact'
+app.config['MYSQL_HOST'] = os.getenv('DBEndpoint')
+app.config['MYSQL_USER'] = os.getenv('DBUser')
+app.config['MYSQL_PASSWORD'] = os.getenv('DBPassword')
+app.config['MYSQL_DB'] = os.getenv('DBName')
 
 mysql = MySQL(app)
 

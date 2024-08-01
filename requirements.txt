@@ -10,3 +10,4 @@ MarkupSafe
 mysqlclient
 SQLAlchemy
 Werkzeug
+flask_mysqldb
